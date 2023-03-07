@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/Models/Categoria.php';
 require_once __DIR__ . '/Models/Prodotto.php';
+require_once __DIR__ . '/Models/Cibo.php';
+require_once __DIR__ . '/Models/Cuccia.php';
+require_once __DIR__ . '/Models/Giochi.php';
 
 
 $categoriaGatti = new Categoria(
@@ -25,22 +28,31 @@ $prodotti[] = new Prodotto(
     $categoriaCani
 );
 
-$prodotti[] = new Prodotto(
+$prodotti[] = new Cibo(
     'Prodotto 2',
-    'Descrizione prodotto 2',
+    'Descrizione Cibo 1',
     33.12,
     1,
-    $categoriaGatti
+    $categoriaGatti,
+    'Coniglio',
+    true
 );
 
-$prodotti[] = new Prodotto(
+$prodotti[] = new Cuccia(
     'Prodotto 3',
-    'Descrizione prodotto 3',
+    'Descrizione Cuccia 1',
     20,
     12,
     $categoriaCani
 );
 
+$prodotti[] = new Giochi(
+    'Prodotto 4',
+    'Descrizione Gioco 1',
+    132,
+    100,
+    $categoriaCani
+);
 
 ?>
 
@@ -66,6 +78,8 @@ $prodotti[] = new Prodotto(
             <p><?php echo $prodotto->descrizione ?></p>
             <p> $ <?php echo $prodotto->prezzo ?></p>
             <p> Ancora <?php echo $prodotto->quantita ?> disponibili </p>
+            <p>Numero Seriale: <?php echo $prodotto->numeroId ?></p>
+            <p>Codice a barre: <?php echo $prodotto->codiceABarre ?></p>
         </div>
     <?php
     }
